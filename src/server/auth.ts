@@ -4,9 +4,13 @@ import {
   getServerSession,
   type NextAuthOptions,
   type DefaultSession,
+  User,
 } from "next-auth";
+
 // import DiscordProvider from "next-auth/providers/discord";
 import GoogleProvider from "next-auth/providers/google";
+import CredentialsProvider from "next-auth/providers/credentials";
+
 import { env } from "~/env.mjs";
 import { prisma } from "~/server/db";
 
@@ -57,6 +61,31 @@ export const authOptions: NextAuthOptions = {
       clientId: env.GOOGLE_CLIENT_ID,
       clientSecret: env.GOOGLE_CLIENT_SECRET,
     }),
+
+    // CredentialsProvider({
+    //   name: "Credentials",
+    //   credentials: {
+    //     username: { label: "Username", type: "text" },
+    //     password: { label: "Password", type: "password" },
+    //   },
+    //   async authorize(credentials) {
+    //     if (credentials == undefined) return null;
+
+    //     const users = [{ id: 10, name: "test", password: "test" }];
+
+    //     const user =  users.find(
+    //       (user) =>
+    //         user.name === credentials.username &&
+    //         user.password === credentials.password
+    //     );
+
+    //     if (user) {
+    //       return user
+    //     } else {
+    //       return null;
+    //     }
+    //   },
+    // }),
 
     /**
      * ...add more providers here.
