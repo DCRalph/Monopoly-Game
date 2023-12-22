@@ -7,7 +7,6 @@ import Image from "next/image";
 // import { api } from "~/utils/api";
 
 import { useState, useEffect } from "react";
-import { prisma } from "~/server/db";
 
 export default function Home() {
   // const hello = api.example.hello.useQuery({ text: "from tRPC" });
